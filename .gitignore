@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# AWS
+.aws/
+*.pem
+
+# Environment
+.env
+.env.*
+.env.local
+.env.*.local
+
+# Build/dist
+dist/
+build/
+.serverless/
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
