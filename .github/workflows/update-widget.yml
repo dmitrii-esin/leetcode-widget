@@ -1,21 +1,21 @@
-name: Update LeetCode Widget
-on:
-  schedule:
-    - cron: "0 0 * * *" # Daily
-  push:
-    branches: [main]
-jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with: { node-version: "18" }
-      - run: npm install
-      - run: zip -r lambda.zip server.js node_modules package.json
-      - run: aws lambda update-function-code --function-name leetcodeWidget --zip-file fileb://lambda.zip
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1
-      - run: aws lambda invoke --function-name leetcodeWidget out.json
+# name: Update LeetCode Widget
+# on:
+#   schedule:
+#     - cron: "0 0 * * *" # Daily
+#   push:
+#     branches: [main]
+# jobs:
+#   update:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: actions/setup-node@v3
+#         with: { node-version: "18" }
+#       - run: npm install
+#       - run: zip -r lambda.zip server.js node_modules package.json
+#       - run: aws lambda update-function-code --function-name leetcodeWidget --zip-file fileb://lambda.zip
+#         env:
+#           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           AWS_REGION: us-east-1
+#       - run: aws lambda invoke --function-name leetcodeWidget out.json
